@@ -47,6 +47,36 @@ def minor_matrix(m,id ,jd):
 def twodeterminent(m):
     return m[0][0]*m[1][1]-m[0][1]*m[1][0]
 #define lu compostion can help in impletion of determinent , matrix inverse , solving linear equation etc
+def LUdecomposition(matrix):
+    r,c=shape(matrix)
+    if r!=c:
+        vectors.error
+    n=r
+    # create L and U
+    L = [[0]*n for _ in range(n)]
+    U = [[0]*n for _ in range(n)]
+
+    for i in range(n):
+
+        # Upper triangular
+        for j in range(i, n):
+            s = 0
+            for k in range(i):
+                s += L[i][k] * U[k][j]
+            U[i][j] = matrix[i][j] - s
+
+        # Lower triangular
+        for j in range(i, n):
+            if i == j:
+                L[i][i] = 1
+            else:
+                s = 0
+                for k in range(i):
+                    s += L[j][k] * U[k][i]
+                L[j][i] = (matrix[j][i] - s) / U[i][i]
+
+    return L, U
+#the basic lu is written but other functions are not updated nor lu is stoll optimized 
 def determinent(m):
     if shape(m)==[2,2]:
         return twodeterminent(m)
