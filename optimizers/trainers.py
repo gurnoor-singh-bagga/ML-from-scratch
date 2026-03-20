@@ -21,7 +21,7 @@ def batch_const_alpha(output_vector,input_matrix,gradient_function,alpha=0.01,ba
     for _ in range(epoch):
         temp=[0]*(features+1)
         for i in range(samples):
-            gradient=gradient_function(output_vector, z,gradient_function, i)
+            gradient=gradient_function(output_vector, z,theta, i)
             temp=v.add(temp,gradient)
             if((i+1)%batch_size==0):
                 theta=v.subtract(theta,v.scaler_product(alpha/batch_size,temp))
