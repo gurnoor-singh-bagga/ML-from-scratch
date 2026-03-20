@@ -14,20 +14,20 @@ def sgd_static_alpha(output_vector,input_matrix,learning_rate=0.01,epoches=100):
             gradient=v.scaler_product((output_vector[i],v.dotproduct(theta,z[i])),z[i])
             theta=gradient_descent.gradient_step(gradient, theta,learning_rate)
     return theta
-#lu decompostion is needed to impliment in inverse and 
+#lu decompostion is needed to impliment in inverse and x matrix should not have two features with co variance factor 1
 def clossed_form(y,x):
     z= [[1] + row for row in x]
     zt=mtx.transpose(z)
     return mtx.matrix_vector_product((mtx.matrix_matrix_product(mtx.matrix_inverse(mtx.matrix_matrix_product(zt,z)),zt)),y)
 
-def batch(output_vector,input_matrix,alpha,batch_size=500,epoch=100):
+def batch_const_alpha(output_vector,input_matrix,alpha,batch_size=500,epoch=100):
     samples,features=mtx.shape(input_matrix)
     theta=[0]*(features+1)
     z=[[1]+ _ for _ in input_matrix]
     for _ in range(epoch):
         temp=[0]*(features+1)
         for i in range(samples):
-            gradient=v.scaler_product((-output_vector[i]+v.dotproduct(theta,z[i])),z[i])
+            gradient=v.scaler_product((v.dotproduct(theta,z[i])-output_vector[i]),z[i])
             temp=v.add(temp,gradient)
             if((i+1)%batch_size==0):
                 theta=v.subtract(theta,v.scaler_product(alpha/batch_size,temp))
