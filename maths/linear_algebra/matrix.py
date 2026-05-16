@@ -28,9 +28,9 @@ def matrix_vector_product(m,v):
 def matrix_matrix_product(a,b):
     return transpose([matrix_vector_product(a,i) for i in transpose(b)])
 def zero_matrix(rows,colm):
-    return [[colm*[0]] for _ in range(rows)]
+    return [colm*[0] for _ in range(rows)]
 def one_matrix(rows,colm):
-    return [[colm*[1]] for _ in range(rows)]
+    return [colm*[1] for _ in range(rows)]
 def identiy_matrix(n):
     m=zero_matrix(n,n)
     for i in range(n):
