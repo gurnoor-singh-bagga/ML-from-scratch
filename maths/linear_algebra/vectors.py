@@ -1,7 +1,7 @@
 
 #vector opretions
 def error():
-    raise ValueError("invalid input")
+    raise ValueError("no of elements are not same")
 def checkdim(a,b):
     if len(a)!=len(b):
         error()

@@ -1,5 +1,5 @@
 #matrix opretion
-import math.linear_algebra.vectors
+import math.linear_algebra.vectors as vectors
 
 def shape(m):
     return[len(m),len(m[0])]
@@ -80,7 +80,7 @@ def LUdecomposition(matrix):
 def determinent(m):
     N=shape(m)
     if N[0]!=N[1]:
-        vectors.error
+        raise ValueError("not a sqr matrix")
     if N==[2,2]:
         return twodeterminent(m)
     else:
@@ -91,8 +91,8 @@ def determinent(m):
         return d
 def matrix_inverse(matrix):
     if determinent(matrix)==0:
-        vectors.error()
-    m=matrix.copy()
+        raise ValueError("singuler matrix")
+    m=[row[:] for row in matrix]
     n=len(m)
     l,u=LUdecomposition(m)
     lin=identiy_matrix(n)
@@ -107,14 +107,14 @@ def matrix_inverse(matrix):
             uin[j]=vectors.subtract(uin[j],vectors.scaler_product(u[j][i],uin[i]))
     return matrix_matrix_product(uin,lin)
 def trace(m):
-    t=0
+    d=0
     for i in range(len(m)):
         d+=m[i][i]
-    return m
+    return d
 def forbenius_norm(m):
     s=0
     for i in m:
-        s+=vectors.squared_magnitude(m[i])
+        s+=vectors.squared_magnitude(i)
     return s**0.5
 def mateix_vector_solver(A,b):
     ##what will happen if matrix is not sqr ? two cases more eqn less varibles or less eqn more varibles

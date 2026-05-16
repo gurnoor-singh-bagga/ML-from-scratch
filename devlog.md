@@ -18,3 +18,8 @@ demo-show comparision btw actual libraries(pytorch, etc) to this
 
 #27 march 2026
 I cant update as I was updateing cause of clg stuff, major continous updates will be coming from mid may
+
+#16 may 2026 
+finally getting back.
+done wiring lu decompostion in matrix inverse
+now what major chunk left is that i need to update models to classes. time  to learn oops ig  

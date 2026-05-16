@@ -1,7 +1,7 @@
 from maths.linear_algebra import vectors as v
 from maths.linear_algebra import matrix as mtx
-import optimizers.gradient_descent
-import optimizers.trainers
+import optimizers.gradient_descent as gradient_descent
+import optimizers.trainers as trainers
 #for proper scaling this ahve to breaken and loss function is need to build
 #improvment can done as it set can be sufflesd for not having any bias based on there order 
 
