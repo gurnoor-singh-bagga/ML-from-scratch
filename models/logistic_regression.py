@@ -29,7 +29,7 @@ class logisticRegression:
         if self.theta==None:
             raise RuntimeError("call fit() before predict()")
         z=[[1]+row for row in X]
-        return [act.sigmod(v.dotproduct(self.theta,row)) for row in z]
+        return [act.sigmoid(v.dotproduct(self.theta,row)) for row in z]
 
     def predict(self,X):
         return [1 if p>=0.5 else 0  for p in self.predict_proba(X)]
