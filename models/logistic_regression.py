@@ -25,17 +25,17 @@ class logisticRegression:
         elif self.method ==base.TrainMethod.CLOSED_FORM:
             raise ValueError("logistic regression doesnt have closed form use TrainMethod.SGD or TrainMeathod.BATCH")
         return self
-    def predict_proab(self,X):
+    def predict_proba(self,X):
         if self.theta==None:
             raise RuntimeError("call fit() before predict()")
         z=[[1]+row for row in X]
-        return [act.sigmod(v.dotproduct(theta,row)) for row in z]
+        return [act.sigmod(v.dotproduct(self.theta,row)) for row in z]
 
     def predict(self,X):
-        return [1 if p>=0.5 else 0  for p in self.predict_proab(X)]
+        return [1 if p>=0.5 else 0  for p in self.predict_proba(X)]
     def score(self,y,X):
         y_pred=self.predict(X)
-        return metrics.r2_score(y,y_pred)
+        return metrics.accuracy(y,y_pred)
 
 
 
