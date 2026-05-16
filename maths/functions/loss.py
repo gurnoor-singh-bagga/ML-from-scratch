@@ -1,5 +1,5 @@
 import math
-import math.linear_algebra.vectors as v
+import maths.linear_algebra.vectors as v
 
 def mse(y_true , y_pred):
     #mean of sqr diff

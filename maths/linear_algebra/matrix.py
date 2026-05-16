@@ -1,5 +1,5 @@
 #matrix opretion
-import math.linear_algebra.vectors as vectors
+import maths.linear_algebra.vectors as vectors
 
 def shape(m):
     return[len(m),len(m[0])]

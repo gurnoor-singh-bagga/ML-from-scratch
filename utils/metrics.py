@@ -6,13 +6,11 @@ def r2_score(y_true, y_pred):
         return 1.0
     return 1 - (ss_res / ss_tot)
 
-# classification metrics
 def accuracy(y_true, y_pred):
     correct = sum(1 for y, p in zip(y_true, y_pred) if y == p)
     return correct / len(y_true)
 
 def confusion_matrix(y_true, y_pred):
-    # returns [[TP, FP], [FN, TN]] for binary
     tp = sum(1 for y, p in zip(y_true, y_pred) if y == 1 and p == 1)
     fp = sum(1 for y, p in zip(y_true, y_pred) if y == 0 and p == 1)
     fn = sum(1 for y, p in zip(y_true, y_pred) if y == 1 and p == 0)

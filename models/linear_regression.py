@@ -1,20 +1,36 @@
-from maths.linear_algebra import vectors as v
-from maths.linear_algebra import matrix as mtx
-import optimizers.gradient_descent as gradient_descent
+import maths.linear_algebra.vectors as v
+import maths.linear_algebra.matrix as mtx
 import optimizers.trainers as trainers
-#for proper scaling this ahve to breaken and loss function is need to build
-#improvment can done as it set can be sufflesd for not having any bias based on there order 
+import utils.metrics as metrics
+import models.base as base
 
 def linear_gradient(y,x,theta,):
     return v.scaler_product((v.dotproduct(theta,x)-y),x)
 
-def sgd_static_alpha(output_vector,input_matrix,learning_rate=0.01,epoch=100):
-    return trainers.sgd_alpha_const(output_vector,input_matrix,linear_gradient,learning_rate,epoch)
-#lu decompostion is needed to impliment in inverse and x matrix should not have two features with co variance factor 1
-def clossed_form(y,x):
-    z= [[1] + row for row in x]
-    zt=mtx.transpose(z)
-    return mtx.matrix_vector_product((mtx.matrix_matrix_product(mtx.matrix_inverse(mtx.matrix_matrix_product(zt,z)),zt)),y)
+class linearRegression:
+    def __init__(self,method=base.TrainMethod.SGD,alpha=0.01,batch_size=500, epoch=100,schedule=None):
+        self.method=method
+        self.alpha=alpha
+        self.batch_size=batch_size
+        self.epoch=epoch
+        self.schedule=schedule
+        self.theta=None
 
-def batch_const_alpha(output_vector,input_matrix,alpha,batch_size=500,epoch=100):
-    return trainers.batch_const_alpha(output_vector,input_matrix,linear_gradient,alpha,batch_size,epoch)
+    def fit( self,y,X):
+        if  self.method==base.TrainMethod.SGD:
+            self.theta=trainers.sgd(y,X,linear_gradient,self.alpha,self.epoch,self.schedule)
+        elif self.method==base.TrainMethod.BATCH:
+             self.theta = trainers.batch(y,X,linear_gradient, self.alpha,self.batch_size,self.epoch,self.schedule)
+        elif self.method ==base.TrainMethod.CLOSED_FORM:
+             z=[[1]+row for row in X]
+             zt=mtx.transpose(z)
+             self.theta = mtx.matrix_vector_product(mtx.matrix_matrix_product(mtx.matrix_inverse(mtx.matrix_matrix_product(zt, z)), zt), y)
+        return self
+    def predict(self,X):
+        if self.theta==None:
+            raise RuntimeError("call fit() before predict()")
+        z=[[1] +row for row in X]
+        return [v.dotproduct(self.theta,row) for row in z]
+    def score(self,y,X):
+        y_pred=self.predict(X)
+        return metrics.r2_score(y,y_pred)
