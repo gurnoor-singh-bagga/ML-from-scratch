@@ -1,5 +1,5 @@
 #matrix opretion
-import vectors
+import math.linear_algebra.vectors
 
 def shape(m):
     return[len(m),len(m[0])]
@@ -78,43 +78,34 @@ def LUdecomposition(matrix):
     return L, U
 #the basic lu is written but other functions are not updated nor lu is stoll optimized 
 def determinent(m):
-    if shape(m)==[2,2]:
+    N=shape(m)
+    if N[0]!=N[1]:
+        vectors.error
+    if N==[2,2]:
         return twodeterminent(m)
     else:
-        d=0
-        for j, val in enumerate(m[0]):
-            d+= ((-1)**j)*val*determinent(minor_matrix(m,1,j+1))
+        d=1
+        l,u=LUdecomposition(m)
+        for i in range(N[0]):
+            d=d*u[i][i]
         return d
 def matrix_inverse(matrix):
     if determinent(matrix)==0:
         vectors.error()
     m=matrix.copy()
     n=len(m)
-    i=identiy_matrix(n)
-    for k in range(n):
-        while(True):
-            c=m[k][k]
-            if c==0 and k!=n-1:
-                tempm=m[k]
-                tempi=i[k]
-                for i in range(k,n-1):
-                    m[k]=m[k+1]
-                    i[k]=i[k+1]
-                m[n-1]=tempm
-                i[n-1]=tempi
-                continue
-            break
-        i[k]=vectors.scaler_product(1/c,i[k])
-        m[k]=vectors.scaler_product(1/c,m[k])
-        for s in range(k+1,n):
-            i[s]=vectors.subtract(i[s], vectors.scaler_product(m[s][k],i[k]))
-            m[s]=vectors.subtract(m[s], vectors.scaler_product(m[s][k],m[k]))
-    for k in range(n-1,0,-1):
-        if m[k][k]==0:
-            continue
-        for s in range(k-1,-1,-1):
-            i[s]=vectors.subtract(i[s],vectors.scaler_product(m[s][k],i[k]))
-    return i
+    l,u=LUdecomposition(m)
+    lin=identiy_matrix(n)
+    uin=identiy_matrix(n)
+    for i in range(n):
+        for j in range(i+1,n):
+            #lower triangle
+            lin[j]=vectors.subtract(lin[j],vectors.scaler_product(l[j][i],lin[i]))
+    for i in range(n-1,-1,-1):
+        uin[i]=vectors.scaler_product(1/u[i][i],uin[i])
+        for j in range(i):
+            uin[j]=vectors.subtract(uin[j],vectors.scaler_product(u[j][i],uin[i]))
+    return matrix_matrix_product(uin,lin)
 def trace(m):
     t=0
     for i in range(len(m)):
@@ -126,5 +117,7 @@ def forbenius_norm(m):
         s+=vectors.squared_magnitude(m[i])
     return s**0.5
 def mateix_vector_solver(A,b):
+    ##what will happen if matrix is not sqr ? two cases more eqn less varibles or less eqn more varibles
+    #it will be implemented later with eigon values etc....
     return matrix_vector_product(matrix_inverse(A),b)
 #eigon values are will be deloped in next update

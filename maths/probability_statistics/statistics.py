@@ -1,5 +1,5 @@
-from linear_algebra import vectors
-from linear_algebra import matrix
+import maths.linear_algebra.vectors
+import maths.linear_algebra.matrix
 
 def mean(m):
     return vectors.vsum(m)/len(m)

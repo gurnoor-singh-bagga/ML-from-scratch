@@ -1,7 +1,7 @@
-import gradient_descent
-from maths.linear_algebra import matrix as mtx
-from maths.linear_algebra import vectors as v
-from utils import data
+import optimizers.gradient_descent
+import maths.linear_algebra.matrix as mtx
+import maths.linear_algebra.vectors as v
+import utils.data
 #need to update linear regression and logistic regression in future
 #need to add suffle before each epoch
 def sgd_alpha_const(output_vector,input_matrix,gradient_function,alpha=0.01,epoch=100):

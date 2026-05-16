@@ -1,5 +1,5 @@
-from linear_algebra import vectors as v
-from linear_algebra import matrix as m
+import maths.linear_algebra.vectors as v
+import maths.linear_algebra.matrix as m
 
 def numarical_derivative(f,x,h=1e-5):
     #for single varible funtion
