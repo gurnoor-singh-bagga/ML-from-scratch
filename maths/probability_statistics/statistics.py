@@ -3,6 +3,13 @@ import maths.linear_algebra.matrix as matrix
 
 def mean(m):
     return vectors.vsum(m)/len(m)
+def median(v):
+    sort=sorted(v)
+    n=len(sort)
+    mid=n//2
+    if n%2==0:
+        return (sort[mid-1]+sort[mid])/2
+    return sort[mid]
 def variance(v):
     return (1/len(v))*vectors.squared_magnitude(vectors.subtract(v,len(v)*[mean(v)]))
 def standard_deviation(v):

@@ -23,3 +23,9 @@ I cant update as I was updateing cause of clg stuff, major continous updates wil
 finally getting back.
 done wiring lu decompostion in matrix inverse
 now what major chunk left is that i need to update models to classes. time  to learn oops ig  
+done testing and i am closing it here for today 
+plans for nex week 
+adding split and creating proper test files
+test on real world case i got too high acc on fake data cause it was made with very less noise and perfect i say 
+then move forward to new models...
+need to update read me of github 
