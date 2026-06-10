@@ -30,7 +30,7 @@ test on real world case i got too high acc on fake data cause it was made with v
 then move forward to new models...
 need to update read me of github 
 
-#6 may 26
+#16 may 26
 appologies for not keeping up as i said back
 
 while what are main issues are right now :- 
@@ -43,4 +43,7 @@ there are some idea which can be used write now the colm are row major and maxim
 
 so future usage can be changed such that a pipline can be made such that we collect data as colm major do all preprocessing and then transpose it and do model training thus it can be optimized.
 
- 
+#11 june 26
+phase 1 done 
+now there wont be major updates soon , majourly cause of other things in my hand
+while i have learnt many things not in ml but how to handle projects oops about workflow and pipeline in general through the journey till now like i hade to change major chunk in btw as it was not that much expandable and there are many things which are need to be done ie before creating models is regulization of it as it effect was shown in it.
