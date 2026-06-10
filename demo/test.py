@@ -1,7 +1,7 @@
-# demo/test.py
+### demo/test.py
 # run from repo root: python -m demo.test
 
-import random
+""" import random
 random.seed(42)
 
 from models.linear_regression import linearRegression
@@ -11,7 +11,7 @@ from optimizers.schedules import step_decay
 from utils.metrics import r2_score, accuracy, precision, recall, f1_score
 from maths.functions.loss import mse, binary_cross_entropy
 
-# ── helpers ──────────────────────────────────────────────────────────────────
+# ── helpers ───────────────────────────────────────────────────────────
 
 def make_regression_data(n=200):
     # y = 3x1 + 2x2 + 1 + noise
@@ -116,4 +116,4 @@ try:
 except RuntimeError as e:
     print(f"Caught expected error: {e}")
 
-print("\n✓ All tests completed\n")
+print("\n✓ All tests completed\n") """

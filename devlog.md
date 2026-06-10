@@ -29,3 +29,18 @@ adding split and creating proper test files
 test on real world case i got too high acc on fake data cause it was made with very less noise and perfect i say 
 then move forward to new models...
 need to update read me of github 
+
+#6 may 26
+appologies for not keeping up as i said back
+
+while what are main issues are right now :- 
+before that:
+here we are using lists not  arrays 
+as this librariy is for learning ml under the hood not that for  making this for replacing  them 
+
+still to make things fast:- 
+there are some idea which can be used write now the colm are row major and maximum models use one example at a time so that good but preprossing is majorly colm wise like finding mean , changing value with some value or doing other process 
+
+so future usage can be changed such that a pipline can be made such that we collect data as colm major do all preprocessing and then transpose it and do model training thus it can be optimized.
+
+ 

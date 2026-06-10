@@ -31,3 +31,13 @@ def f1_score(y_true, y_pred):
     p = precision(y_true, y_pred)
     r = recall(y_true, y_pred)
     return 2 * p * r / (p + r) if (p + r) > 0 else 0.0
+
+def specificity(y_true, y_pred):
+    cm = confusion_matrix(y_true, y_pred)
+    tn, fp = cm[1][1], cm[0][1]
+    return tn / (tn + fp) if (tn + fp) > 0 else 0.0
+
+def adjusted_r2(y_true, y_pred, n_features):
+    r2 = r2_score(y_true, y_pred)
+    n = len(y_true)
+    return 1 - (1 - r2) * (n - 1) / (n - n_features - 1)

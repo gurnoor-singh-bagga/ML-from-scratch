@@ -5,4 +5,6 @@ class FillStrategy(Enum):
     MEAN="mean"
     MEDIAN="median"
     MEDIAN_STOCHASTIC="median_stochastic"
+    MODE="mode"
+    MODE_STOCHASTIC="mode_stochastic"
     

@@ -10,6 +10,8 @@ def median(v):
     if n%2==0:
         return (sort[mid-1]+sort[mid])/2
     return sort[mid]
+def mode(v):
+    return max(set(v), key=v.count)
 def variance(v):
     return (1/len(v))*vectors.squared_magnitude(vectors.subtract(v,len(v)*[mean(v)]))
 def standard_deviation(v):

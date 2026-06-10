@@ -44,15 +44,4 @@ def cos_similarity(a,b):
     return(dotproduct(a,b)/(ma*mb))
 def squared_magnitude(v):
     return dotproduct(v,v)
-def mean(vectors):
-    n=len(vectors)
-    if n==0:
-        error()
-    d=len(vectors[0])
-    
-    result=[0]*d
-    
-    for v in vectors:
-        result=add(result,v)
-        
-    return scaler_product(1/n,result)
+
